@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Site {
+  system_key  String   @id
+  vendor_name String?
+  vendor_code String?
+  year        String?
+  scope_of_work String?
+  ran_score   String?
+  unique_id   String?
+  site_id     String?
+  site_name   String?
+  longitude   Float?
+  latitude    Float?
+  site_type   String?
+  dati_ii     String?
+  province    String?
+  mc_cluster  String?
+  caf_approved String?
+  site_status  String?
+  cutover_bf   String?
+  cutover_ff   String?
+  cutover_af   String?
+  survey_ff    String?
+  survey_af    String?
+  caf_status   String?
+  caf_submitted String?
+  mos_af       String?
+  mos_bf       String?
+  mos_ff       String?
+  ic_000040_af String?
+  ic_000040_bf String?
+  ic_000040_ff String?
+  imp_integ_af String?
+  imp_integ_bf String?
+  imp_integ_ff String?
+  rfs_af       String?
+  rfs_ff       String?
+  rfs_bf       String?
+  nano_cluster String?
+  scope_category String?
+  ran_scope    String?
+  site_dismantle_af String?
+  site_dismantle_bf String?
+  site_dismantle_ff String?
+  site_trm_type String?
+  summary_scope String?
+  cx_post_mr_af String?
+  cx_post_mr_ff String?
+  swap_time    String?
+  downtime_actual String?
+  area_spider  String?
+} 
