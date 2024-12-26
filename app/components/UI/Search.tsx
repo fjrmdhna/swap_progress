@@ -16,7 +16,7 @@ export function Search({ value, onChange }: SearchProps) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-md border border-gray-300 pl-9 pr-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary"
-        placeholder="Cari di semua kolom..."
+        placeholder="Search in every column..."
       />
     </div>
   )

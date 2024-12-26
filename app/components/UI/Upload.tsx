@@ -71,38 +71,38 @@ export function Upload() {
   })
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4">
+    <div className="w-full max-w-xl mx-auto p-2">
       <div
         {...getRootProps()}
-        className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
+        className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors
           ${isDragActive ? 'border-primary bg-primary/10' : 'border-gray-300 hover:border-primary'}
         `}
       >
         <input {...getInputProps()} />
-        <UploadIcon className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+        <UploadIcon className="w-8 h-8 mx-auto mb-2 text-gray-400" />
         
         {isUploading ? (
-          <p className="text-sm text-gray-600">Mengunggah file...</p>
+          <p className="text-xs text-gray-600">Uploading file...</p>
         ) : (
           <div>
-            <p className="text-sm text-gray-600">
+            <p className="text-xs text-gray-600">
               {isDragActive
-                ? 'Lepaskan file di sini'
-                : 'Tarik dan lepaskan file Excel atau CSV di sini, atau klik untuk memilih file'}
+                ? 'Drop file here'
+                : 'Drag and drop Excel or CSV file here, or click to select file'}
             </p>
-            <p className="mt-2 text-xs text-gray-500">
-              Format yang didukung: .xlsx, .csv
+            <p className="mt-1 text-xs text-gray-500">
+              Supported formats: .xlsx, .csv
             </p>
           </div>
         )}
         
         {errors && (
-          <div className="mt-4 p-4 bg-red-50 rounded-lg">
-            <p className="text-sm font-medium text-red-800">
+          <div className="mt-2 p-2 bg-red-50 rounded-lg">
+            <p className="text-xs font-medium text-red-800">
               {errors.error}
             </p>
             {errors.details && (
-              <ul className="mt-2 text-sm text-red-700 list-disc list-inside">
+              <ul className="mt-1 text-xs text-red-700 list-disc list-inside">
                 {errors.details.map((detail, index) => (
                   <li key={index}>{detail}</li>
                 ))}

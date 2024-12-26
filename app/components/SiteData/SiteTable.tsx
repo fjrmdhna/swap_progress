@@ -68,15 +68,7 @@ const columns: ColumnDef<SiteData>[] = [
   {
     accessorKey: 'nano_cluster',
     header: 'NC',
-  },
-  {
-    accessorKey: 'latitude',
-    header: 'Latitude',
-  },
-  {
-    accessorKey: 'longitude',
-    header: 'Longitude',
-  },
+  }
 ]
 
 export function SiteTable() {
@@ -96,7 +88,7 @@ export function SiteTable() {
   })
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-2">
       <div className="rounded-md border">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -105,7 +97,7 @@ export function SiteTable() {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
                     onClick={header.column.getToggleSortingHandler()}
                   >
                     <div className="flex items-center gap-2">
@@ -130,7 +122,7 @@ export function SiteTable() {
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                    className="px-3 py-2 whitespace-nowrap text-xs text-gray-500"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>

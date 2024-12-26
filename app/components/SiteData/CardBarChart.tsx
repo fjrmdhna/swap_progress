@@ -117,14 +117,14 @@ export function CardBarChart() {
               verticalAlign="top"
               height={36}
             />
-            <Bar dataKey="Survey BF" fill="#8884d8" name="Survey BF" />
-            <Bar dataKey="Survey AF" fill="#8884d888" name="Survey AF" />
-            <Bar dataKey="MOS BF" fill="#82ca9d" name="MOS BF" />
-            <Bar dataKey="MOS AF" fill="#82ca9d88" name="MOS AF" />
-            <Bar dataKey="Swap BF" fill="#ffc658" name="Swap BF" />
-            <Bar dataKey="Swap AF" fill="#ffc65888" name="Swap AF" />
-            <Bar dataKey="Dismantle BF" fill="#ff8042" name="Dismantle BF" />
-            <Bar dataKey="Dismantle AF" fill="#ff804288" name="Dismantle AF" />
+            <Bar dataKey="Survey BF" fill="#8884d8" name="Survey BF" barSize={20} />
+            <Bar dataKey="Survey AF" fill="#8884d888" name="Survey AF" barSize={20} />
+            <Bar dataKey="MOS BF" fill="#82ca9d" name="MOS BF" barSize={20} />
+            <Bar dataKey="MOS AF" fill="#82ca9d88" name="MOS AF" barSize={20} />
+            <Bar dataKey="Swap BF" fill="#ffc658" name="Swap BF" barSize={20} />
+            <Bar dataKey="Swap AF" fill="#ffc65888" name="Swap AF" barSize={20} />
+            <Bar dataKey="Dismantle BF" fill="#ff8042" name="Dismantle BF" barSize={20} />
+            <Bar dataKey="Dismantle AF" fill="#ff804288" name="Dismantle AF" barSize={20} />
           </BarChart>
         </ResponsiveContainer>
       </div>
