@@ -19,9 +19,12 @@ interface MatrixData {
 
 export function CardMatrix() {
   const { filteredData } = useSiteData()
-  const [expandedZones, setExpandedZones] = useState<Record<string, boolean>>({
-    'EAST': true,
-    'WEST': true
+  const [expandedZones, setExpandedZones] = useState<Record<string, boolean>>(() => {
+    const zones = new Set(filteredData.map(item => item.area_spider || 'Unknown'))
+    return Array.from(zones).reduce((acc, zone) => ({
+      ...acc,
+      [zone]: false
+    }), {})
   })
   const [expandedMonths, setExpandedMonths] = useState<Record<string, boolean>>({})
 

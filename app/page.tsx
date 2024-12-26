@@ -5,6 +5,7 @@ import { CardFilter } from './components/SiteData/CardFilter'
 import { CardBarChart } from './components/SiteData/CardBarChart'
 import { SiteTable } from './components/SiteData/SiteTable'
 import { CardMatrix } from './components/SiteData/CardMatrix'
+import { CardMap } from '@/app/components/SiteData/CardMap'
 
 export default async function Home() {
   const initialData = await fetchSiteData()
@@ -24,6 +25,7 @@ export default async function Home() {
           <CardBarChart />
           <CardMatrix />
           <SiteTable />
+          <CardMap />
         </div>
       </SiteDataProvider>
     </main>
