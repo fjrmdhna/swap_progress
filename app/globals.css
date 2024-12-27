@@ -2,65 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 321 98% 48%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 321 98% 48%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 321 98% 48%;
+    --chart-1: 321 98% 48%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 321 98% 48%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 321 98% 48%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 321 98% 48%;
+    --chart-1: 321 98% 48%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
@@ -73,36 +64,218 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-[#F2059F] to-[#2A2A2A] text-foreground font-sans min-h-screen;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
 .leaflet-container {
-  z-index: 1;
+  @apply z-10 rounded-lg shadow-md;
 }
 
 .leaflet-popup-content p {
-  margin: 4px 0;
+  @apply my-1;
 }
 
 .custom-marker-cluster {
-  background: #fff;
-  border: 3px solid #2563eb;
-  border-radius: 50%;
-  color: #2563eb;
-  height: 33px;
-  width: 33px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 15px;
+  @apply bg-white border-4 border-primary text-primary rounded-full h-10 w-10 flex items-center justify-center font-bold text-sm;
 }
 
 .cluster-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  @apply flex items-center justify-center w-full h-full;
 }
+
+/* Enhanced custom styles */
+.dashboard-card {
+  @apply bg-gradient-to-br from-black/50 to-black/30 
+    backdrop-blur-md rounded-xl 
+    shadow-[0_8px_30px_rgb(0,0,0,0.24)] 
+    p-6 transition-all duration-300
+    border border-[#F2059F]/30;
+}
+
+.dashboard-title {
+  @apply text-5xl font-bold mb-12 text-center tracking-wide
+    bg-gradient-to-r from-white via-[#F2059F] to-white
+    bg-clip-text text-transparent
+    relative;
+  background-size: 200% auto;
+  animation: shine 3s ease-in-out infinite;
+}
+
+.dashboard-title::after {
+  content: '';
+  @apply absolute -bottom-4 left-1/2 transform -translate-x-1/2
+    w-32 h-1 rounded-full
+    bg-gradient-to-r from-transparent via-[#F2059F] to-transparent
+    opacity-70;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.dashboard-title svg {
+  @apply inline-block mr-3 mb-1 text-[#F2059F]
+    drop-shadow-[0_0_10px_rgba(242,5,159,0.7)];
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.section-title {
+  @apply text-xl font-semibold mb-4 
+    text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]
+    tracking-wide flex items-center;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+}
+
+.btn-primary {
+  @apply bg-white/20 hover:bg-white/30 
+    text-white font-medium 
+    px-4 py-2 rounded-lg 
+    transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-black/30 hover:bg-black/40 
+    text-white/90 font-medium 
+    px-4 py-2 rounded-lg 
+    transition-all duration-200;
+}
+
+.input {
+  @apply bg-black/20 border border-white/20 
+    text-white placeholder-white/50 
+    rounded-lg px-4 py-2 
+    focus:outline-none focus:border-white/40;
+}
+
+.table {
+  @apply w-full border-collapse;
+}
+
+.table th {
+  @apply bg-black/50 text-[#F2059F] font-semibold text-left px-4 py-2 
+    border-b border-[#F2059F]/20;
+}
+
+.table td {
+  @apply px-4 py-2 text-white/90 border-b border-white/10;
+}
+
+.table tr:hover {
+  @apply bg-[#F2059F]/5;
+}
+
+/* Additional enhancements */
+.glass-effect {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+}
+
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+.text-glow {
+  @apply text-white drop-shadow-[0_0_10px_rgba(242,5,159,0.7)];
+}
+
+.gradient-border {
+  @apply border border-transparent bg-gradient-to-r from-primary to-white rounded-md p-[1px];
+}
+
+.gradient-border > * {
+  @apply bg-background rounded-md;
+}
+
+/* Dropdown styles */
+.select {
+  @apply bg-white/90 border border-white/20 
+    text-gray-800 font-medium rounded-lg px-4 py-2 
+    focus:outline-none focus:border-[#F2059F]/50
+    hover:border-[#F2059F]/30 transition-all duration-200;
+}
+
+/* Style untuk option di dalam select */
+.select option {
+  @apply bg-white text-gray-800;
+}
+
+/* Search input */
+.search-input {
+  @apply bg-black/20 border border-white/20 
+    text-white placeholder-white/50 
+    rounded-lg px-4 py-2 w-full
+    focus:outline-none focus:border-white/40;
+}
+
+/* Icon styles */
+.section-title svg {
+  @apply text-[#F2059F] opacity-100 
+    drop-shadow-[0_2px_3px_rgba(242,5,159,0.5)];
+}
+
+/* Add hover effect for card headers */
+.dashboard-card:hover .section-title {
+  @apply text-white;
+}
+
+.dashboard-card:hover .section-title svg {
+  @apply text-[#F2059F] opacity-100 
+    drop-shadow-[0_2px_3px_rgba(242,5,159,0.5)];
+}
+
+/* Add group class directly without @apply */
+h2.section-title {
+  position: relative;
+}
+
+/* Add hover styles */
+.dashboard-card:hover h2.section-title {
+  @apply text-white;
+}
+
+/* Filter label styles */
+.filter-label {
+  @apply text-white/90 font-medium mb-2 tracking-wide;
+}
+
+/* Enhanced button styles */
+.btn-apply {
+  @apply px-6 py-2.5 bg-[#F2059F] text-white font-semibold
+    rounded-lg shadow-lg 
+    transition-all duration-200
+    hover:bg-[#F2059F]/80
+    hover:shadow-[0_0_15px_rgba(242,5,159,0.5)]
+    focus:outline-none focus:ring-2 focus:ring-[#F2059F]/50;
+}
+
+.btn-reset {
+  @apply px-6 py-2.5 bg-black/30 text-white/90 font-semibold
+    rounded-lg border border-white/10
+    transition-all duration-200
+    hover:bg-black/40 hover:border-white/20
+    focus:outline-none focus:ring-2 focus:ring-white/20;
+}
+

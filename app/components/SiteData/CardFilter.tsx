@@ -67,7 +67,7 @@ export function CardFilter() {
     setShowNoData(false)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 500))
+      await new Promise(resolve => setTimeout(resolve, 100))
 
       let newData = data.filter(item => {
         return Object.entries(selectedFilters).every(([key, value]) => {
@@ -120,16 +120,16 @@ export function CardFilter() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <Search value={searchValue} onChange={setSearchValue} />
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Province</label>
+          <label className="filter-label">Province</label>
           <select
             value={selectedFilters.province}
             onChange={(e) => handleFilterChange('province', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('province').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -138,11 +138,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+          <label className="filter-label">City</label>
           <select
             value={selectedFilters.city}
             onChange={(e) => handleFilterChange('city', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('city').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -151,11 +151,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">MC</label>
+          <label className="filter-label">MC</label>
           <select
             value={selectedFilters.mc_cluster}
             onChange={(e) => handleFilterChange('mc_cluster', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('mc_cluster').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -164,11 +164,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Scope Category</label>
+          <label className="filter-label">Scope Category</label>
           <select
             value={selectedFilters.scope_category}
             onChange={(e) => handleFilterChange('scope_category', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('scope_category').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -177,11 +177,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">SOW</label>
+          <label className="filter-label">SOW</label>
           <select
             value={selectedFilters.scope_of_work}
             onChange={(e) => handleFilterChange('scope_of_work', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('scope_of_work').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -190,11 +190,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">RAN Scope</label>
+          <label className="filter-label">RAN Scope</label>
           <select
             value={selectedFilters.ran_scope}
             onChange={(e) => handleFilterChange('ran_scope', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('ran_scope').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -203,11 +203,11 @@ export function CardFilter() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">NC</label>
+          <label className="filter-label">NC</label>
           <select
             value={selectedFilters.nano_cluster}
             onChange={(e) => handleFilterChange('nano_cluster', e.target.value)}
-            className="w-full rounded-md border border-gray-300 p-2 text-sm"
+            className="select w-full"
           >
             {getFilteredOptions('nano_cluster').map(value => (
               <option key={value} value={value}>{value}</option>
@@ -216,19 +216,18 @@ export function CardFilter() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-2">
-        <button
-          onClick={handleSubmit}
-          className="px-4 py-1.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Apply Filters
-        </button>
-
-        <button
+      <div className="flex justify-end space-x-4">
+        <button 
           onClick={resetFilters}
-          className="px-4 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          className="btn-reset"
         >
           Reset
+        </button>
+        <button 
+          onClick={handleSubmit}
+          className="btn-apply"
+        >
+          Apply Filters
         </button>
       </div>
 

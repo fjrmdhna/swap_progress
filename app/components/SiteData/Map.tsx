@@ -29,11 +29,13 @@ const createClusterCustomIcon = function (cluster: any) {
 export default function Map() {
   const { filteredData } = useSiteData()
   const mapRef = useRef<LeafletMap | null>(null)
+  
+  // Tambahkan key untuk MarkerClusterGroup
+  const clusterKey = useMemo(() => Date.now(), [filteredData])
 
   const markers = useMemo(() => {
     const result = filteredData
       .filter(site => {
-        // Filter untuk scope_of_work existing dan koordinat valid
         return (
           site.scope_of_work?.toLowerCase() === 'existing' && 
           site.latitude && 
@@ -54,7 +56,6 @@ export default function Map() {
         marker.position[1] !== 0
       )
 
-    console.log('Total valid existing site markers:', result.length)
     return result
   }, [filteredData])
 
@@ -92,6 +93,7 @@ export default function Map() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MarkerClusterGroup
+            key={clusterKey}
             chunkedLoading
             iconCreateFunction={createClusterCustomIcon}
           >
