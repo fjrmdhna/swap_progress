@@ -69,8 +69,28 @@ export default function Chart() {
           <YAxis axisLine={{ strokeWidth: 2 }} />
           <Tooltip />
           <Legend verticalAlign="top" height={36} />
-          <Bar dataKey="Swap BF" fill="#ffc658" name="Swap BF" barSize={20} />
-          <Bar dataKey="Swap AF" fill="#F2059F" name="Swap AF" barSize={20} />
+          <Bar 
+            dataKey="Swap BF" 
+            fill="#ffc658" 
+            name="Swap BF" 
+            barSize={20}
+            label={{ 
+              position: 'top',
+              fill: '#333333',
+              fontSize: 12
+            }}
+          />
+          <Bar 
+            dataKey="Swap AF" 
+            fill="#F2059F" 
+            name="Swap AF" 
+            barSize={20}
+            label={{ 
+              position: 'top',
+              fill: '#333333',
+              fontSize: 12
+            }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -10,13 +10,13 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 321 98% 48%;
+    --primary: 0 100% 50%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 321 98% 48%;
+    --accent: 330 100% 71%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -28,6 +28,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --tertiary: 181 100% 41%;
     --radius: 0.5rem;
   }
 
@@ -64,7 +65,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-gradient-to-br from-[#F2059F] to-[#2A2A2A] text-foreground font-sans min-h-screen;
+    @apply bg-gradient-to-br from-[#FF0000] via-[#FF69B4] to-[#00CED1] text-foreground font-sans min-h-screen;
   }
 }
 
@@ -83,7 +84,7 @@
 }
 
 .custom-marker-cluster {
-  @apply bg-white/90 border-4 border-[#F2059F] 
+  @apply bg-white/90 border-4 border-[#FF0000] 
     text-gray-800 font-bold text-sm
     rounded-full h-12 w-12 
     flex items-center justify-center 
@@ -97,18 +98,16 @@
 
 /* Enhanced custom styles */
 .dashboard-card {
-  @apply bg-gradient-to-br from-black/50 to-black/30 
+  @apply bg-gradient-to-br from-black/60 to-black/40 
     backdrop-blur-md rounded-xl 
-    shadow-[0_8px_30px_rgb(0,0,0,0.24)] 
+    shadow-[0_8px_30px_rgb(0,0,0,0.3)] 
     p-6 transition-all duration-300
-    border border-[#F2059F]/30;
+    border border-white/20;
 }
 
 .dashboard-title {
   @apply text-5xl font-bold mb-12 text-center tracking-wide
-    bg-gradient-to-r from-white via-[#F2059F] to-white
-    bg-clip-text text-transparent
-    relative;
+    text-white relative font-sans;
   background-size: 200% auto;
   animation: shine 3s ease-in-out infinite;
 }
@@ -117,8 +116,8 @@
   content: '';
   @apply absolute -bottom-4 left-1/2 transform -translate-x-1/2
     w-32 h-1 rounded-full
-    bg-gradient-to-r from-transparent via-[#F2059F] to-transparent
-    opacity-70;
+    bg-gradient-to-r from-[#FF0000] via-[#FF69B4] to-[#00CED1]
+    opacity-80;
 }
 
 @keyframes shine {
@@ -131,8 +130,8 @@
 }
 
 .dashboard-title svg {
-  @apply inline-block mr-3 mb-1 text-[#F2059F]
-    drop-shadow-[0_0_10px_rgba(242,5,159,0.7)];
+  @apply inline-block mr-3 mb-1 text-[#00CED1]
+    drop-shadow-[0_0_10px_rgba(0,206,209,0.7)];
   animation: float 3s ease-in-out infinite;
 }
 
@@ -181,8 +180,8 @@
 }
 
 .table th {
-  @apply bg-black/50 text-[#F2059F] font-semibold text-left px-4 py-2 
-    border-b border-[#F2059F]/20;
+  @apply bg-black/60 text-[#00CED1] font-semibold text-left px-4 py-2 
+    border-b border-[#00CED1]/20;
 }
 
 .table td {
@@ -190,7 +189,7 @@
 }
 
 .table tr:hover {
-  @apply bg-[#F2059F]/5;
+  @apply bg-[#FF0000]/5;
 }
 
 /* Additional enhancements */
@@ -203,7 +202,7 @@
 }
 
 .text-glow {
-  @apply text-white drop-shadow-[0_0_10px_rgba(242,5,159,0.7)];
+  @apply text-white drop-shadow-[0_0_10px_rgba(255,0,0,0.7)];
 }
 
 .gradient-border {
@@ -218,8 +217,8 @@
 .select {
   @apply bg-white/90 border border-white/20 
     text-gray-800 font-medium rounded-lg px-4 py-2 
-    focus:outline-none focus:border-[#F2059F]/50
-    hover:border-[#F2059F]/30 transition-all duration-200;
+    focus:outline-none focus:border-[#FF0000]/50
+    hover:border-[#FF0000]/30 transition-all duration-200;
 }
 
 /* Style untuk option di dalam select */
@@ -237,8 +236,8 @@
 
 /* Icon styles */
 .section-title svg {
-  @apply text-[#F2059F] opacity-100 
-    drop-shadow-[0_2px_3px_rgba(242,5,159,0.5)];
+  @apply text-[#00CED1] opacity-100 
+    drop-shadow-[0_2px_3px_rgba(0,206,209,0.5)];
 }
 
 /* Add hover effect for card headers */
@@ -247,8 +246,8 @@
 }
 
 .dashboard-card:hover .section-title svg {
-  @apply text-[#F2059F] opacity-100 
-    drop-shadow-[0_2px_3px_rgba(242,5,159,0.5)];
+  @apply text-[#00CED1] opacity-100 
+    drop-shadow-[0_2px_3px_rgba(0,206,209,0.5)];
 }
 
 /* Add group class directly without @apply */
@@ -268,12 +267,11 @@ h2.section-title {
 
 /* Enhanced button styles */
 .btn-apply {
-  @apply px-6 py-2.5 bg-[#F2059F] text-white font-semibold
+  @apply px-6 py-2.5 bg-gradient-to-r from-[#FF0000] to-[#FF69B4] text-white font-semibold
     rounded-lg shadow-lg 
     transition-all duration-200
-    hover:bg-[#F2059F]/80
-    hover:shadow-[0_0_15px_rgba(242,5,159,0.5)]
-    focus:outline-none focus:ring-2 focus:ring-[#F2059F]/50;
+    hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]
+    focus:outline-none focus:ring-2 focus:ring-[#FF0000]/50;
 }
 
 .btn-reset {
@@ -294,5 +292,15 @@ h2.section-title {
   @apply w-12 h-12 border-4 border-[#30BFA5]/30 border-t-[#30BFA5] 
     rounded-full animate-spin;
   animation: spin 1s linear infinite;
+}
+
+/* Update warna untuk checkbox dan focus states */
+input[type="checkbox"] {
+  @apply rounded border-gray-300 text-[#00CED1] focus:ring-[#00CED1];
+}
+
+/* Update warna untuk dropdown hover */
+.select:hover {
+  @apply border-[#00CED1]/30;
 }
 
