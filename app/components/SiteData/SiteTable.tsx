@@ -133,44 +133,40 @@ export function SiteTable() {
         </table>
       </div>
 
-      <div className="flex items-center justify-between px-2 py-4">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between mt-4">
+        <div className="text-white">
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+        </div>
+        <div className="flex gap-2">
           <button
-            className="rounded border p-1"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
+            className="text-white hover:text-[#F2059F] disabled:text-white/50 disabled:cursor-not-allowed"
           >
             {'<<'}
           </button>
           <button
-            className="rounded border p-1"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            className="text-white hover:text-[#F2059F] disabled:text-white/50 disabled:cursor-not-allowed"
           >
             {'<'}
           </button>
           <button
-            className="rounded border p-1"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
+            className="text-white hover:text-[#F2059F] disabled:text-white/50 disabled:cursor-not-allowed"
           >
             {'>'}
           </button>
           <button
-            className="rounded border p-1"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
+            className="text-white hover:text-[#F2059F] disabled:text-white/50 disabled:cursor-not-allowed"
           >
             {'>>'}
           </button>
         </div>
-        <span className="flex items-center gap-1">
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount()}
-          </strong>
-        </span>
       </div>
     </div>
   )

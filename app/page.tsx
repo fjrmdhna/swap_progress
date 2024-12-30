@@ -58,17 +58,15 @@ export default async function Home() {
             <div className="dashboard-card">
               <h2 className="section-title text-lg md:text-xl">
                 <Grid className="inline-block mr-2 mb-1" size={24} />
-                Matrix View
+                Overview
               </h2>
-              <div className="overflow-x-auto">
-                <CardMatrix />
-              </div>
+              <CardMatrix />
             </div>
             
             <div className="dashboard-card">
               <h2 className="section-title text-lg md:text-xl">
                 <Table className="inline-block mr-2 mb-1" size={24} />
-                Site Data
+                Site Detail
               </h2>
               <div className="overflow-x-auto">
                 <SiteTable />
