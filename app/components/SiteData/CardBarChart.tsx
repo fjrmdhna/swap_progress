@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { WeeklyProgress } from './WeeklyProgress'
 
 export function CardBarChart() {
   const ChartWithNoSSR = dynamic(() => import('./Chart'), {
@@ -14,9 +15,13 @@ export function CardBarChart() {
   })
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <h3 className="text-lg font-medium mb-4">Site Progress by Month</h3>
-      <ChartWithNoSSR />
+    <div className="space-y-6">
+      <div className="bg-white p-4 rounded-lg shadow">
+        <h3 className="text-lg font-medium mb-4">Site Progress by Month</h3>
+        <ChartWithNoSSR />
+      </div>
+
+      <WeeklyProgress />
     </div>
   )
 } 
