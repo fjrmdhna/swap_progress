@@ -11,41 +11,12 @@ export function Upload() {
   const { loading, setLoading } = useLoading()
   const router = useRouter()
 
-  // Fungsi test koneksi
-  const testSupabaseConnection = async () => {
-    try {
-      console.log('Testing Supabase connection...')
-      
-      const { data: testData, error: testError } = await supabase
-        .from('site_data')
-        .select('*')
-        .limit(1)
-
-      if (testError) {
-        console.error('Connection test failed:', testError)
-        alert('Koneksi ke Supabase gagal: ' + testError.message)
-        return false
-      }
-
-      console.log('Connection test successful:', testData)
-      alert('Koneksi ke Supabase berhasil! Data sample: ' + JSON.stringify(testData[0]?.site_id))
-      return true
-
-    } catch (error) {
-      console.error('Connection test error:', error)
-      alert('Error testing connection: ' + (error as Error).message)
-      return false
-    }
-  }
-
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
     try {
       setLoading(true)
-      const file = event.target.files?.[0]
-      if (!file) {
-        setLoading(false)
-        return
-      }
 
       // Read Excel file
       const reader = new FileReader()
@@ -158,13 +129,6 @@ export function Upload() {
           file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700
           hover:file:bg-violet-100 disabled:opacity-50"
       />
-      <button
-        onClick={testSupabaseConnection}
-        className="py-2 px-4 rounded-full bg-violet-50 text-violet-700 
-          hover:bg-violet-100 text-sm font-semibold"
-      >
-        Test Connection
-      </button>
     </div>
   )
 } 
