@@ -16,72 +16,59 @@ import {
   ArrowUpFromLine
 } from 'lucide-react'
 import { LoadingProvider } from './context/LoadingContext'
+import { supabase } from '@/lib/supabase'
 
 export default async function Home() {
   const initialData = await fetchSiteData()
-  console.log('Initial data count:', initialData.length)
 
   return (
     <SiteDataProvider initialData={initialData}>
       <LoadingProvider>
-        <main className="min-h-screen p-4 md:p-6 lg:p-8">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="dashboard-title text-3xl md:text-4xl lg:text-5xl">
-              <ArrowUpFromLine className="inline-block" size={32} />
-              Swap Progress Dashboard
-            </h1>
-            
-            <div className="space-y-4 md:space-y-6 lg:space-y-8">
-              <div className="dashboard-card">
-                <h2 className="section-title text-lg md:text-xl">
-                  <UploadIcon className="inline-block mr-2 mb-1" size={24} />
-                  Upload Data
-                </h2>
-                <Upload />
-              </div>
-              
-              <div className="dashboard-card overflow-x-auto">
-                <h2 className="section-title text-lg md:text-xl">
-                  <Filter className="inline-block mr-2 mb-1" size={24} />
-                  Filter Options
-                </h2>
-                <CardFilter />
-              </div>
-              
-              <div className="dashboard-card">
-                <h2 className="section-title text-lg md:text-xl">
-                  <BarChart3 className="inline-block mr-2 mb-1" size={24} />
-                  Progress Chart
-                </h2>
-                <div className="overflow-x-auto">
-                  <CardBarChart />
+        <main className="h-screen p-1 overflow-hidden">
+          <div className="h-full flex flex-col gap-1">
+            <div className="h-[4vh] flex justify-between items-center px-2">
+              <h1 className="text-lg font-bold text-white">Swap Progress</h1>
+              <form action="/auth/signout" method="post">
+                <button type="submit" className="px-2 py-0.5 text-xs btn-reset">
+                  Logout
+                </button>
+              </form>
+            </div>
+
+            <div className="h-[96vh] flex flex-col gap-1">
+              <div className="h-[15vh] grid grid-cols-[20%_80%] gap-1">
+                <div className="dashboard-card compact-card p-1 flex items-center">
+                  <Upload />
+                </div>
+                <div className="dashboard-card compact-card p-1 overflow-hidden">
+                  <CardFilter />
                 </div>
               </div>
-              
-              <div className="dashboard-card">
-                <h2 className="section-title text-lg md:text-xl">
-                  <Grid className="inline-block mr-2 mb-1" size={24} />
-                  Overview
-                </h2>
-                <CardMatrix />
-              </div>
-              
-              <div className="dashboard-card">
-                <h2 className="section-title text-lg md:text-xl">
-                  <Table className="inline-block mr-2 mb-1" size={24} />
-                  Site Detail
-                </h2>
-                <div className="overflow-x-auto">
-                  <SiteTable />
+
+              <div className="h-[42vh] grid grid-cols-2 gap-1">
+                <div className="dashboard-card compact-card p-1">
+                  <div className="h-full overflow-hidden">
+                    <CardBarChart />
+                  </div>
+                </div>
+                <div className="dashboard-card compact-card p-1">
+                  <div className="h-full overflow-hidden">
+                    <CardMatrix />
+                  </div>
                 </div>
               </div>
-              
-              <div className="dashboard-card">
-                <h2 className="section-title text-lg md:text-xl">
-                  <Map className="inline-block mr-2 mb-1" size={24} />
-                  Geographic Overview
-                </h2>
-                <CardMap />
+
+              <div className="h-[39vh] grid grid-cols-2 gap-1">
+                <div className="dashboard-card compact-card p-1">
+                  <div className="h-full">
+                    <CardMap />
+                  </div>
+                </div>
+                <div className="dashboard-card compact-card p-1">
+                  <div className="h-full overflow-auto">
+                    <SiteTable />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -304,3 +304,68 @@ input[type="checkbox"] {
   @apply border-[#00CED1]/30;
 }
 
+.compact-dashboard {
+  --card-padding: 0.5rem;
+  --text-base: 0.75rem;
+  --text-sm: 0.675rem;
+  --text-xs: 0.625rem;
+}
+
+.dashboard-card {
+  @apply p-2;
+}
+
+.section-title {
+  @apply text-sm mb-1;
+}
+
+/* Adjust table styles */
+.table th {
+  @apply px-2 py-1 text-xs;
+}
+
+.table td {
+  @apply px-2 py-1 text-xs;
+}
+
+/* Tambahkan atau update style berikut */
+.compact-card {
+  @apply text-xs; /* Base font size untuk card */
+}
+
+.compact-card .section-title {
+  @apply text-xs mb-1;
+}
+
+.compact-card .filter-label {
+  @apply text-xs mb-1;
+}
+
+.compact-card .select {
+  @apply text-xs py-1 px-2;
+}
+
+.compact-card .btn-apply,
+.compact-card .btn-reset {
+  @apply text-xs px-3 py-1;
+}
+
+/* Table styles */
+.compact-card .table th {
+  @apply text-[10px] px-1 py-0.5;
+}
+
+.compact-card .table td {
+  @apply text-[10px] px-1 py-0.5;
+}
+
+/* Chart adjustments */
+.compact-card .recharts-text {
+  @apply text-[8px];
+}
+
+/* Matrix adjustments */
+.compact-card .matrix-cell {
+  @apply text-[10px] p-1;
+}
+

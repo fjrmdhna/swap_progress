@@ -145,43 +145,45 @@ export function CardFilter() {
   }
 
   return (
-    <div className="space-y-6 min-h-[300px] flex flex-col justify-between pb-4">
-      <div className="space-y-6">
-        <Search value={searchValue} onChange={setSearchValue} />
+    <div className="space-y-2 min-h-[120px] flex flex-col justify-between pb-1">
+      <div className="space-y-2">
+        <div className="h-6">
+          <Search value={searchValue} onChange={setSearchValue} />
+        </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-7 gap-1">
           {Object.entries({
             province: 'Province',
             city: 'City',
             mc_cluster: 'MC',
-            scope_category: 'Scope Category',
+            scope_category: 'Category',
             scope_of_work: 'SOW',
-            ran_scope: 'RAN Scope',
+            ran_scope: 'RAN',
             nano_cluster: 'NC'
           }).map(([key, label]) => (
             <div key={key} className="relative filter-dropdown">
-              <label className="filter-label">{label}</label>
+              <label className="text-[10px] text-white/90">{label}</label>
               <button
                 onClick={() => toggleDropdown(key)}
-                className="select w-full text-left flex items-center justify-between group hover:border-[#F2059F]/30"
+                className="select w-full text-left flex items-center justify-between group hover:border-[#F2059F]/30 h-6 px-1 py-0.5 text-[10px]"
               >
-                <span className="truncate text-sm">
+                <span className="truncate">
                   {selectedFilters[key].length 
-                    ? `${selectedFilters[key].length} selected` 
-                    : 'Select...'}
+                    ? `${selectedFilters[key].length}` 
+                    : 'All'}
                 </span>
                 <ChevronDown 
-                  className={`h-4 w-4 transition-transform duration-200 text-gray-400 group-hover:text-[#F2059F] ${
+                  className={`h-3 w-3 transition-transform duration-200 text-gray-400 group-hover:text-[#F2059F] ${
                     openDropdown === key ? 'transform rotate-180' : ''
                   }`}
                 />
               </button>
               {openDropdown === key && (
-                <div className="absolute z-50 w-max min-w-full mt-1 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-white/20 max-h-[300px] overflow-y-auto">
-                  <div className="p-2 space-y-1">
-                    <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 pb-2 mb-2">
-                      <div className="flex items-center justify-between px-2">
-                        <span className="text-xs font-medium text-gray-500">
+                <div className="absolute z-50 w-32 mt-1 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-white/20 max-h-[120px] overflow-y-auto">
+                  <div className="p-1 space-y-0.5">
+                    <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 pb-1 mb-1">
+                      <div className="flex items-center justify-between px-1">
+                        <span className="text-[9px] font-medium text-gray-500">
                           {getFilteredOptions(key).length} options
                         </span>
                         <button
@@ -192,7 +194,7 @@ export function CardFilter() {
                               [key]: []
                             }))
                           }}
-                          className="text-xs text-[#F2059F] hover:text-[#F2059F]/80 ml-4"
+                          className="text-[9px] text-[#F2059F] hover:text-[#F2059F]/80"
                         >
                           Clear
                         </button>
@@ -201,15 +203,15 @@ export function CardFilter() {
                     {getFilteredOptions(key).map(value => (
                       <label 
                         key={value} 
-                        className="flex items-center gap-2 px-2 py-1.5 hover:bg-[#F2059F]/5 rounded cursor-pointer transition-colors duration-150 whitespace-nowrap"
+                        className="flex items-center gap-1 px-1 py-0.5 hover:bg-[#F2059F]/5 rounded cursor-pointer transition-colors duration-150 whitespace-nowrap"
                       >
                         <input
                           type="checkbox"
                           checked={selectedFilters[key].includes(value)}
                           onChange={(e) => handleFilterChange(key, value, e.target.checked)}
-                          className="rounded border-gray-300 text-[#F2059F] focus:ring-[#F2059F] transition-all duration-150"
+                          className="rounded border-gray-300 text-[#F2059F] focus:ring-[#F2059F] transition-all duration-150 h-3 w-3"
                         />
-                        <span className="text-sm text-gray-700">{value}</span>
+                        <span className="text-[10px] text-gray-700">{value}</span>
                       </label>
                     ))}
                   </div>
@@ -226,12 +228,12 @@ export function CardFilter() {
         )}
       </div>
 
-      <div className="flex justify-end space-x-4">
-        <button onClick={resetFilters} className="btn-reset">
+      <div className="flex justify-end space-x-2">
+        <button onClick={resetFilters} className="px-2 py-0.5 text-[10px] btn-reset">
           Reset
         </button>
-        <button onClick={handleSubmit} className="btn-apply">
-          Apply Filters
+        <button onClick={handleSubmit} className="px-2 py-0.5 text-[10px] btn-apply">
+          Apply
         </button>
       </div>
     </div>

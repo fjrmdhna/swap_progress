@@ -1,72 +1,69 @@
 "use client"
 
 import { useSiteData } from '@/app/context/SiteDataContext'
-import { useMemo } from 'react'
 
 export function CardMatrix() {
   const { filteredData } = useSiteData()
 
-  const stats = useMemo(() => {
-    // Hanya ambil site yang existing
-    const existingSites = filteredData.filter(site => 
-      site.scope_of_work?.toLowerCase() === 'existing'
-    )
-    
-    const total = existingSites.length
-    const swapped = existingSites.filter(site => 
-      site.cutover_af !== null
-    ).length
-    const surveyed = existingSites.filter(site => 
-      site.survey_af !== null
-    ).length
-    const mos = existingSites.filter(site => 
-      site.mos_af !== null
-    ).length
-    const dismantled = existingSites.filter(site => 
-      site.site_dismantle_af !== null
-    ).length
+  // Filter hanya site yang existing
+  const existingSites = filteredData.filter(site => 
+    site.scope_of_work?.toLowerCase() === 'existing'
+  )
 
-    // Target completion adalah 9632 sites
-    const targetTotal = 9632
-    const swapRate = total ? ((swapped / total) * 100).toFixed(1) : '0'
-    const completionRate = ((swapped / targetTotal) * 100).toFixed(1)
+  // Hitung total existing sites
+  const totalSites = existingSites.length
 
-    return {
-      total,
-      swapped,
-      surveyed,
-      mos,
-      dismantled,
-      swapRate,
-      completionRate
-    }
-  }, [filteredData])
+  // Hitung surveyed sites dari existing sites
+  const surveyedSites = existingSites.filter(site => site.survey_af).length
+
+  // Hitung MOS sites dari existing sites
+  const mosSites = existingSites.filter(site => site.mos_af).length
+
+  // Hitung swapped sites dari existing sites
+  const swappedSites = existingSites.filter(site => site.cutover_af).length
+
+  // Hitung dismantled sites dari existing sites
+  const dismantledSites = existingSites.filter(site => site.site_dismantle_af).length
+
+  // Target total tetap 9632 sites
+  const targetTotal = 9632
+  // Hitung completion rate berdasarkan target
+  const completionRate = ((swappedSites / targetTotal) * 100).toFixed(1)
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">Total Sites</h3>
-        <p className="text-2xl font-bold text-white">{stats.total}</p>
-      </div>
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">Surveyed</h3>
-        <p className="text-2xl font-bold text-white">{stats.surveyed}</p>
-      </div>
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">MOS</h3>
-        <p className="text-2xl font-bold text-white">{stats.mos}</p>
-      </div>
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">Swap</h3>
-        <p className="text-2xl font-bold text-white">{stats.swapped}</p>
-      </div>
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">Dismantled</h3>
-        <p className="text-2xl font-bold text-white">{stats.dismantled}</p>
-      </div>
-      <div className="p-4 rounded-lg bg-black/30 backdrop-blur">
-        <h3 className="text-white/70 text-sm">Completion Rate</h3>
-        <p className="text-2xl font-bold text-white">{stats.completionRate}%</p>
+    <div className="w-full h-full flex flex-col gap-1">
+      <h3 className="text-[10px] font-medium text-white/90">Overview</h3>
+      
+      <div className="grid grid-cols-6 gap-1 flex-1">
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">Total Sites</span>
+          <span className="text-sm font-bold text-white">{totalSites}</span>
+        </div>
+        
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">Surveyed</span>
+          <span className="text-sm font-bold text-white">{surveyedSites}</span>
+        </div>
+
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">MOS</span>
+          <span className="text-sm font-bold text-white">{mosSites}</span>
+        </div>
+
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">Swap</span>
+          <span className="text-sm font-bold text-white">{swappedSites}</span>
+        </div>
+
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">Dismantled</span>
+          <span className="text-sm font-bold text-white">{dismantledSites}</span>
+        </div>
+
+        <div className="bg-black/30 rounded p-1 flex flex-col items-center justify-center">
+          <span className="text-[8px] text-white/60">Completion Rate</span>
+          <span className="text-sm font-bold text-white">{completionRate}%</span>
+        </div>
       </div>
     </div>
   )
